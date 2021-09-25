@@ -1,0 +1,1 @@
+(self.webpackChunk_onlabsorg_oloviewer=self.webpackChunk_onlabsorg_oloviewer||[]).push([[801],{20:(e,t,o)=>{o(301),e.exports=e=>({async get(e,t={}){!function(e){if("string"!=typeof e)throw new Error("String type expected")}(e),(t=Object(t)).method="get";const o=await fetch(e,t);if(!o.ok)throw new Error(o.status);return await o.text()}})}}]);

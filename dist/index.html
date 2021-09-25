@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script src="viewer.js"></script>
+        <style>
+            html, body {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: block;
+                margin: 0 auto;
+                background-color: #FFFFFF;
+                line-height: 1.4;
+            }
+        </style>
+        <link rel="stylesheet" href="viewer.css"></link>
+    </head>
+    <body>
+        
+        <div class="olo-viewer"></div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+                
+                // create the document store
+                const homeURL = String( new URL('/home', location.href) );
+                const homeStore = new olo.HTTPStore(homeURL);
+                const hub = new olo.Hub( homeStore );
+
+                // create the olojs viewer
+                const element = document.querySelector('.olo-viewer');
+                const viewer = new olo.Viewer(element, hub);
+
+                // bind the viewer src attribute to the url hash of this page
+                function render () {
+                    const hash = location.hash.slice(1);
+                    if (hash) {
+                        element.setAttribute('src', location.hash.slice(1));
+                    } else {
+                        location.hash = "/home/";
+                    }
+                }
+                window.addEventListener('hashchange', render);
+                render();
+            });
+        </script>
+    </body>
+</html>
