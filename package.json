@@ -1,6 +1,6 @@
 {
   "name": "@onlabsorg/oloviewer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A HTTP client and Stilo plugin for rendering olojs documents in the browser.",
   "main": "index.js",
   "scripts": {
