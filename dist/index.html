@@ -27,7 +27,7 @@
                 const homeURL = String( new URL('/home', location.href) );
                 const homeStore = new olo.HTTPStore(homeURL);
                 const hub = new olo.Hub( homeStore );
-
+                
                 // create the olojs viewer
                 const element = document.querySelector('.olo-viewer');
                 const viewer = new olo.Viewer(element, hub);
