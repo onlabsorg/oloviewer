@@ -1,49 +1,5 @@
-<html>
-    <head>
-        <script src="viewer.js"></script>
-        <style>
-            html, body {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                display: block;
-                margin: 0 auto;
-                background-color: #FFFFFF;
-                line-height: 1.4;
-            }
-        </style>
-        <link rel="stylesheet" href="viewer.css"></link>
-    </head>
-    <body>
-        
-        <div class="olo-viewer"></div>
-    
-        <script>
-            document.addEventListener("DOMContentLoaded", async () => {
-                
-                // create the document store
-                const homeURL = String( new URL('/home', location.href) );
-                const homeStore = new olo.HTTPStore(homeURL);
-                const hub = new olo.Hub( homeStore );
-                
-                // create the olojs viewer
-                const element = document.querySelector('.olo-viewer');
-                const viewer = new olo.Viewer(element, hub);
-
-                // bind the viewer src attribute to the url hash of this page
-                function render () {
-                    const hash = location.hash.slice(1);
-                    if (hash) {
-                        element.setAttribute('src', location.hash.slice(1));
-                    } else {
-                        location.hash = "/home/";
-                    }
-                }
-                window.addEventListener('hashchange', render);
-                render();
-            });
-        </script>
-    </body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>oloViewer</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"><link href="/js/swan_modules/date.2994bb07.js" rel="prefetch"><link href="/js/swan_modules/debug.4325bdff.js" rel="prefetch"><link href="/js/swan_modules/dict.039c5267.js" rel="prefetch"><link href="/js/swan_modules/http.48e1720d.js" rel="prefetch"><link href="/js/swan_modules/json.a36a0746.js" rel="prefetch"><link href="/js/swan_modules/list.894aaa54.js" rel="prefetch"><link href="/js/swan_modules/markdown.84e1e65c.js" rel="prefetch"><link href="/js/swan_modules/math.33790bfb.js" rel="prefetch"><link href="/js/swan_modules/path.8bbf803f.js" rel="prefetch"><link href="/js/swan_modules/text.f5e06ac2.js" rel="prefetch"><link href="/css/chunk-vendors.a428f350.css" rel="preload" as="style"><link href="/css/index.28bf0860.css" rel="preload" as="style"><link href="/js/chunk-vendors.e420686e.js" rel="preload" as="script"><link href="/js/index.c0ecf391.js" rel="preload" as="script"><link href="/css/chunk-vendors.a428f350.css" rel="stylesheet"><link href="/css/index.28bf0860.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but oloViewer doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>document.addEventListener("DOMContentLoaded", () => {
+            const homeURL = String(new URL('/home', location.href));
+            const homeStore = new olo.HTTPStore(homeURL/*, {extension:".olo"}*/);
+            olo.Viewer('#app', homeStore);
+        });</script><script src="/js/chunk-vendors.e420686e.js"></script><script src="/js/index.c0ecf391.js"></script></body></html>

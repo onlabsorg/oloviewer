@@ -1,13 +1,9 @@
-//
-//  This test module starts a http-http server exposing the filestore at
-//  `/test/public` and serving a viewer client.
-//
-//  If you run this module with a parameter, it will be interpreted as a docId
-//  and the corresponding doc will be rendered in the browser. For ecample:
-//
-//      node test/http-server /path/to/doc
-//
 
+const olo = require('@onlabsorg/olojs');
+const Server = require('../lib/server');
+
+const express = require('express');
+const fs = require('fs');
 
 const child_process = require('child_process');
 function exec (command) {
@@ -21,22 +17,12 @@ function exec (command) {
     });
 }
 
+const homeStore = new olo.FileStore(`${__dirname}/home`);
 
-const olo = require('@onlabsorg/olojs');
-const store = new olo.FileStore(`${__dirname}/public`);
+const server = Server(homeStore);
 
-const Server = require('../lib/server');
-const server = Server( store );
-
-server.listen(8010, async () => {
-    console.log("olojs http server listening on port 8010");
-
-    const docId = process.argv[2] || "/index";
-    if (docId) {
-        console.log(`opening ${docId} in the browser ...`);
-        await exec(`xdg-open http://localhost:8010#/home/index`);
-    };
+server.listen(8010, async err => {
+    if (err) throw err;
+    console.log("oloViewer test server listening on port 8010");
+    await exec(`xdg-open http://localhost:8010#/home/test`);
 });
-
-
-
