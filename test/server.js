@@ -17,9 +17,8 @@ function exec (command) {
     });
 }
 
-const homeStore = new olo.FileStore(`${__dirname}/home`);
-
-const server = Server(homeStore);
+const store = new olo.FileStore(`${__dirname}/root-store`);
+const server = Server(store);
 
 server.listen(8010, async err => {
     if (err) throw err;

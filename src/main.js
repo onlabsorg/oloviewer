@@ -5,13 +5,16 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 
 import * as olo from '@onlabsorg/olojs/browser';
+
+olo.Viewer = (elt, store) => new Vue({
+    
+    vuetify,
+    
+    render: h => h(App, {
+        props: {store}
+    })
+    
+}).$mount(elt);
+
 window.olo = olo;
-
-olo.Viewer = (elt, homeStore) => {
-    Vue.prototype.$store = new olo.Hub(homeStore);
-    new Vue({
-      vuetify,
-      render: h => h(App)
-  }).$mount(elt)    
-}
-
+export default olo.Viewer

@@ -16,9 +16,15 @@
     <div id="app"></div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const homeURL = String(new URL('/home', location.href));
-            const homeStore = new olo.HTTPStore(homeURL/*, {extension:".olo"}*/);
-            olo.Viewer('#app', homeStore);
+            const rootURL = String(new URL('/docs', location.href));
+            
+            olo.Viewer('#app', new olo.Router({
+                '/'      : new olo.HTTPStore(rootURL/*, {extension:".olo"}*/),
+                'http:/' : new olo.HTTPStore('http:/'),
+                'https:/': new olo.HTTPStore('https:/'),
+                'local:/': new olo.BrowserStore('olojs_local_store'),
+                'temp:/' : new olo.MemoryStore(),
+            }));
         });
     </script>
     <!-- built files will be auto injected -->

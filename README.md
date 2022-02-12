@@ -1,4 +1,8 @@
 # oloViewer
+
+> This package has been discontinued, since now [olowiki] supports static
+> content and can act as a viewer.
+
 This is a web client that renders [olojs] documents in the browser. You can
 either use it via the NodeJS API or as a [stilo] plugin.
 
@@ -71,3 +75,4 @@ license.
 
 [olojs]: https://github.com/onlabsorg/olojs/blob/master/README.md
 [stilo]: https://github.com/onlabsorg/stilo/blob/main/README.md
+[olowiki]: https://github.com/onlabsorg/olowiki/blob/main/README.md

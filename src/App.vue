@@ -17,6 +17,8 @@ import oloViewer from './components/olo-viewer';
 
 export default {
   name: 'App',
+  
+  props: ['store'],
 
   components: { oloViewer },
 
@@ -33,7 +35,7 @@ export default {
   computed: {
       
       docContext () {
-          return this.$store ? this.$store.createContextFromId(this.docId) : {};
+          return this.store ? this.store.createContextFromId(this.docId) : {};
       }
   },
   
@@ -51,7 +53,7 @@ export default {
           if (hash) {
               this.docId = hash;
           } else {
-              this.setHash('/home/');
+              this.setHash('/');
           }
       },
       
@@ -62,8 +64,8 @@ export default {
       async render () {
           if (this.docContext.__path__ !== this.docPath) {
               this.docPath = this.docContext.__path__;
-              this.docSource = await this.$store.read(this.docPath);
-              this.evaluateDoc = this.$store.parseDocument(this.docSource);
+              this.docSource = await this.store.read(this.docPath);
+              this.evaluateDoc = this.store.parseDocument(this.docSource);
           }
           const {text, data} = await this.evaluateDoc(this.docContext);
           this.docText = text;

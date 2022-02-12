@@ -1,6 +1,6 @@
 {
   "name": "@onlabsorg/oloviewer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A HTTP client and Stilo plugin for rendering olojs documents in the browser.",
   "main": "index.js",
   "repository": {
@@ -19,7 +19,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@onlabsorg/olojs": "^0.21.2",
+    "@onlabsorg/olojs": "0.21.x",
     "core-js": "^3.6.5",
     "dompurify": "^2.3.3",
     "vue": "^2.6.11",
